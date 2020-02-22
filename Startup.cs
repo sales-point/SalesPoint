@@ -56,7 +56,6 @@ namespace SalesPoint
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseRouting();
 
@@ -64,17 +63,8 @@ namespace SalesPoint
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
+                    pattern: "{controller=Home}/{action=Index}");
+                endpoints.MapFallbackToController("Index", "Home");
             });
         }
     }
