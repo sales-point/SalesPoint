@@ -31,17 +31,19 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: '#FAA945', // Цвет кукурузы (#CA6924 - цвет янтаря)
-      light: '#fbba6a',
-      dark: '#af7630',
+      main: '#212121',
+      light: '#4d4d4d',
+      dark: '#171717',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: '#7A942E', // Жёлтый [как] молодые ростки
-      light: '#94a957',
+      main: '#fff',
+      light: '#df6843',
+      dark: '#972e0e',
       contrastText: '#556720',
     },
     error: {
-      main: '#C3272B', // чисто-алый
+      main: '#C3272B',
       dark: '#881b1e',
       light: '#cf5255',
     },

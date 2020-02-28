@@ -29,13 +29,23 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader?name=/images/[name].[ext]',
-          },
-        ],
+        use: {
+          loader: 'url-loader',
+        },
       },
     ],
   },

@@ -4,9 +4,9 @@ import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { theme } from './styled'
 
-import { Header } from './layouts'
-import Homepage from './Homepage'
-import Cart from './Cart'
+import { Header, Footer } from './layouts'
+import Homepage from './Homepage/Homepage'
+import Cart from './Cart/Cart'
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
             <Route exact path="/cart" component={Cart} />
             <Route path="*" render={() => <Redirect to="/" />} />
           </Switch>
+          <Footer />
         </ThemeProvider>
       </Suspense>
     </Router>
