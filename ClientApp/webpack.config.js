@@ -7,15 +7,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'main.js',
-    publicPath: path.resolve(__dirname, 'public'),
+    publicPath: '/',
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 9000,
-    historyApiFallback: {
-      index: 'public/index.html',
-    },
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -29,13 +27,23 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader?name=/images/[name].[ext]',
-          },
-        ],
+        use: {
+          loader: 'url-loader',
+        },
       },
     ],
   },
