@@ -1,5 +1,14 @@
 import React from 'react'
-import { Typography, Grid, Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
+import { Link as RouterLink } from 'react-router-dom'
+import {
+  Typography,
+  Grid,
+  Link,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+} from '@material-ui/core'
 import { useStyles } from './useStyles'
 
 import SetMenuIcon from '../../images/set_menu_icon.png'
@@ -15,6 +24,7 @@ const Homepage = () => {
   let menuSections = [
     {
       title: 'Сеты',
+      href: 'menu/sets',
       description: `Виртуозно составленные нашими поварами композиции из различных видов суши
     смогут удовлетворить потребности даже самого искушенного клиента. На выбор
     предоставляются сезонные сеты, различные сеты из горячих, острых роллов и
@@ -23,6 +33,7 @@ const Homepage = () => {
     },
     {
       title: 'Роллы',
+      href: 'menu/rolls',
       description: `Роллы могут быть разнообразными по своему компонентному составу и особенностям
     приготовления: с овощами, фруктами, быть сладкими, солеными, с кунжутом и без,
     иметь нори как сверху, так и внутри, быть горячими или холодными, могут
@@ -31,6 +42,7 @@ const Homepage = () => {
     },
     {
       title: 'Суши',
+      href: 'menu/sushi',
       description: `Суши подаются всегда только холодными, все компоненты имеют примерно
     одинаковую форму, аккуратно укладываются друг на друга, дополнительные
     ингредиенты - это лишь небольшое дополнение к тандему риса и рыбки
@@ -39,6 +51,7 @@ const Homepage = () => {
     },
     {
       title: 'Напитки',
+      href: 'menu/drinks',
       description: `Японские напитки наравне с едой отличаются вкусом и подачей, удивляя туристов
     и открывая новые вкусовые ощущения. В этом разделе меню вы можете заказать
     традиционные японские чаи, такие как сенча, гёкуро и матча, либо выбрать более
@@ -58,30 +71,32 @@ const Homepage = () => {
         <Grid container item spacing={6} justify="center">
           {menuSections.map(item => (
             <Grid item key={item.title}>
-              <Card style={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia style={{ height: 140 }} image={item.image} title={item.title} />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {item.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                      style={{ minHeight: 140 }}
-                    >
-                      {item.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+              <Link underline="none" component={RouterLink} to={item.href}>
+                <Card style={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia style={{ height: 140 }} image={item.image} title={item.title} />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {item.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                        style={{ minHeight: 140 }}
+                      >
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Link>
             </Grid>
           ))}
         </Grid>
       </Grid>
       {/* Brief introduction */}
-      <Grid container item xs={12} className={classes.briefInfoSection}>
+      <Grid container item className={classes.briefInfoSection}>
         <Grid item className={classes.briefInfoPart}>
           <Typography variant="h4" gutterBottom>
             Почему мы?

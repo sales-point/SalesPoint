@@ -1,18 +1,13 @@
 import React from 'react'
-import { Typography, Link, Container } from '@material-ui/core'
-
-import { ReactLink } from '../styled'
+import { Typography } from '@material-ui/core'
 
 const Cart = () => {
   return (
-    <Container>
+    <>
       <Typography variant="h4" gutterBottom>
-        Cart page
+        Ka-boo
       </Typography>
-      <Link component={ReactLink} to="/">
-        Get back
-      </Link>
-    </Container>
+    </>
   )
 }
 

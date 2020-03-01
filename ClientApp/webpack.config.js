@@ -7,15 +7,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'main.js',
-    publicPath: path.resolve(__dirname, 'public'),
+    publicPath: '/',
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 9000,
-    historyApiFallback: {
-      index: 'public/index.html',
-    },
+    historyApiFallback: true,
   },
   module: {
     rules: [

@@ -6,12 +6,16 @@ export const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4, 4),
   },
   briefInfoSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'center',
     backgroundColor: '#CFDDC3',
     width: 'inherit',
-    padding: theme.spacing(8, 10),
+    padding: theme.spacing(8, 4),
   },
   briefInfoPart: {
     padding: theme.spacing(0, 0, 4, 0),
+    maxWidth: '1500px',
   },
   menuSection: {
     backgroundImage: `url(${BackgroundMenuSections})`,
