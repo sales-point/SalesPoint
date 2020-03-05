@@ -8,13 +8,21 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  loginButton: {
+    color: theme.palette.background.default,
+    borderColor: theme.palette.background.default,
+    '&:hover': {
+      color: theme.palette.primary.light,
+      borderColor: theme.palette.primary.light,
+    },
+  },
   tabpanel: {
     padding: theme.spacing(0, 1),
-    backgroundColor: '#F5F5F5',
-    color: '#000',
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.text.primary,
   },
   footer: {
-    backgroundColor: '#F5F5F5',
+    backgroundColor: theme.palette.primary.light,
     padding: theme.spacing(3, 0),
   },
   drawerHeader: {

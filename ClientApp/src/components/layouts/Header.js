@@ -54,7 +54,7 @@ const Header = ({ history }) => {
               </Link>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="secondary">
+              <Button variant="outlined" className={classes.loginButton}>
                 <Typography>Вход</Typography>
               </Button>
             </Grid>

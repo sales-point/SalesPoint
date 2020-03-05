@@ -18,11 +18,11 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/menu/sets" component={Sets} />
-            <Route exact path="/menu/rolls" component={Rolls} />
-            <Route exact path="/menu/sushi" component={Sushi} />
-            <Route exact path="/menu/drinks" component={Drinks} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/menu/sets" component={Sets} />
+            <Route path="/menu/rolls" component={Rolls} />
+            <Route path="/menu/sushi" component={Sushi} />
+            <Route path="/menu/drinks" component={Drinks} />
             <Route path="*" render={() => <Redirect to="/" />} />
           </Switch>
           <Footer />
