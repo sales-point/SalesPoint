@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { ADD_ITEM } from '../../redux/actionTypes'
 import {
   Container,
   Box,
@@ -15,7 +17,9 @@ import { useStyles } from './useStyles'
 import data from './menuItemsTest'
 
 const Rolls = () => {
+  const dispatch = useDispatch()
   const classes = useStyles()
+
   return (
     <Container>
       <Box my={3}>
@@ -43,7 +47,12 @@ const Rolls = () => {
                   </div>
                   <div className={classes.cardActions}>
                     <Typography variant="h6">{item.price} Р</Typography>
-                    <Button disableElevation color="secondary" variant="contained">
+                    <Button
+                      disableElevation
+                      color="secondary"
+                      variant="contained"
+                      onClick={() => dispatch({ type: ADD_ITEM, payload: item })}
+                    >
                       В корзину
                     </Button>
                   </div>

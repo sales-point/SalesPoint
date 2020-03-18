@@ -1,19 +1,6 @@
 import React from 'react'
 import { useLocation, withRouter, Link as RouterLink } from 'react-router-dom'
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Link,
-  Grid,
-  Button,
-  Tabs,
-  Tab,
-  IconButton,
-  Drawer,
-} from '@material-ui/core'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import { AppBar, Toolbar, Typography, Link, Grid, Button, Tabs, Tab } from '@material-ui/core'
 
 import { ReactLink } from '../styled'
 import { useStyles } from './useStyles'
@@ -26,20 +13,10 @@ const Header = ({ history }) => {
     setValue(location.pathname)
   })
 
-  const [open, setOpen] = React.useState(false)
-
   const classes = useStyles()
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
-  }
-
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-
-  const handleDrawerClose = () => {
-    setOpen(false)
   }
 
   return (
@@ -94,24 +71,9 @@ const Header = ({ history }) => {
               />
             </Tabs>
           </Grid>
-          <Grid item>
-            <IconButton onClick={handleDrawerOpen}>
-              <ShoppingCartIcon fontSize="default" />
-            </IconButton>
-          </Grid>
+          <Grid item>{value === '/order' ? null : <Cart />}</Grid>
         </Grid>
       </AppBar>
-
-      <Drawer variant="persistent" anchor="right" open={open}>
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronRightIcon />
-          </IconButton>
-        </div>
-        <Grid container style={{ width: 240 }}>
-          <Cart />
-        </Grid>
-      </Drawer>
     </>
   )
 }
