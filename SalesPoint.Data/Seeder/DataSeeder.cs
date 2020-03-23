@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using SalesPoint.Data.Data;
 using SalesPoint.Data.Infos;
 
 namespace SalesPoint.Data.Seeder
 {
     public class DataSeeder
     {
-        public static async void InitDefaultUser(DataContext context, UserManager<ApplicationUser> userManager)
+        public static async Task InitDefaultUser(DataContext context, UserManager<ApplicationUser> userManager)
         {
             var defaultAdmin = new ApplicationUser()
             {
@@ -21,7 +22,7 @@ namespace SalesPoint.Data.Seeder
                 Email = "Admin@sushi.admin",
                 UserName = "Admin"
             };
-            var result = await userManager.CreateAsync(defaultAdmin);
+            var result = await userManager.CreateAsync(defaultAdmin, "123456Admin!");
             if (!result.Succeeded)
                 throw new Exception("Unable to create default user!");
             
@@ -46,19 +47,31 @@ namespace SalesPoint.Data.Seeder
                 });
             }
 
-            //var taskList = new List<Task>();
-
             foreach (var role in rolesList)
             {
-                /*var task = Task.Run(async () => await roleManager.CreateAsync(role));
-                taskList.Add(task);*/
                 await roleManager.CreateAsync(role);
             }
+        }
 
-            /*while (!taskList.All(t => t.IsCompleted))
+        public static void InitMenuTypes(DataContext context)
+        {
+            var menuTypesList = new List<MenuType>();
+
+            foreach (var type in AppInfos.MenuTypesInfo)
             {
-                taskList.FirstOrDefault(t => t.IsCompleted).Wait();
-            }*/
+                if (context.MenuTypes.Any(r => r.Name.ToUpper() == type.ToUpper()))
+                    continue;
+
+                menuTypesList.Add(new MenuType()
+                {
+                    Name = type,
+                });
+            }
+
+            foreach (var type in menuTypesList)
+            {
+                context.MenuTypes.Add(type);
+            }
         }
     }
 }

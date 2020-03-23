@@ -10,5 +10,14 @@ namespace SalesPoint.Data.Infos
         {
             "Administrator"
         };
+        public static List<string> MenuTypesInfo = new List<string>()
+        {
+            "Суши",
+            "Роллы",
+            "Темпура",
+            "Wok",
+            "Соус",
+            "Напиток"
+        };
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SalesPoint.Data;
@@ -9,9 +10,10 @@ using SalesPoint.Data;
 namespace SalesPoint.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200306150203_Menu Added")]
+    partial class MenuAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,81 +226,6 @@ namespace SalesPoint.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SalesPoint.Data.Data.MenuItem", b =>
-                {
-                    b.Property<int>("MenuItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("MenuSetId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("MenuTypeId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Mixture")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("Weight")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("MenuItemId");
-
-                    b.HasIndex("MenuSetId");
-
-                    b.HasIndex("MenuTypeId");
-
-                    b.ToTable("MenuItems");
-                });
-
-            modelBuilder.Entity("SalesPoint.Data.Data.MenuSet", b =>
-                {
-                    b.Property<int>("MenuSetId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("MenuSetId");
-
-                    b.ToTable("MenuSets");
-                });
-
-            modelBuilder.Entity("SalesPoint.Data.Data.MenuType", b =>
-                {
-                    b.Property<int>("MenuTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("MenuTypeId");
-
-                    b.ToTable("MenuTypes");
-                });
-
             modelBuilder.Entity("SalesPoint.Data.ApplicationRole", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>");
@@ -364,19 +291,6 @@ namespace SalesPoint.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SalesPoint.Data.Data.MenuItem", b =>
-                {
-                    b.HasOne("SalesPoint.Data.Data.MenuSet", null)
-                        .WithMany("MenuItems")
-                        .HasForeignKey("MenuSetId");
-
-                    b.HasOne("SalesPoint.Data.Data.MenuType", "MenuType")
-                        .WithMany()
-                        .HasForeignKey("MenuTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
