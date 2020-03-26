@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace SalesPoint.Data.Data
@@ -13,8 +14,7 @@ namespace SalesPoint.Data.Data
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
-        public virtual IEnumerable<MenuItem> MenuItems {get;set;}
+        public IEnumerable<MenuItemMenuSet> SetItems {get;set;}
 
         [Required]
         public string Description { get; set; }

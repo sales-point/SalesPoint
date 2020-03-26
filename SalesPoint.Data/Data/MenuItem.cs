@@ -30,5 +30,8 @@ namespace SalesPoint.Data.Data
 
         [Required]
         public int MenuTypeId { get; set; }
+
+        public IEnumerable<MenuItemMenuSet> ItemSets { get; set; }
+
     }
 }

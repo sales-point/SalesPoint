@@ -30,6 +30,19 @@ namespace SalesPoint.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<MenuItemMenuSet>()
+                .HasKey(mm => new { mm.MenuItemId, mm.MenuSetId });
+
+            builder.Entity<MenuItemMenuSet>()
+                .HasOne(mm => mm.MenuItem)
+                .WithMany(ms => ms.ItemSets)
+                .HasForeignKey(ms => ms.MenuItemId);
+
+            builder.Entity<MenuItemMenuSet>()
+                .HasOne(mm => mm.MenuSet)
+                .WithMany(ms => ms.SetItems)
+                .HasForeignKey(ms => ms.MenuSetId);
         }
     }
 }
