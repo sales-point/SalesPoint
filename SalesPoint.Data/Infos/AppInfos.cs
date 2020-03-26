@@ -46,5 +46,29 @@ namespace SalesPoint.Data.Infos
             }
 
         };
+
+        public static List<MenuSet> MenuSets = new List<MenuSet>()
+        {
+            new MenuSet
+            {
+                MenuSetId = 1,
+                Name = "Наруто и Сакура",
+                Description = "Самый выгодный сет для двоих",
+                Price = 500,
+                SetItems = new List<MenuItemMenuSet>
+                {
+                    new MenuItemMenuSet 
+                    {
+                        MenuItemId = 1,
+                        MenuItemCount = 2
+                    },
+                    new MenuItemMenuSet
+                    {
+                        MenuItemId = 2,
+                        MenuItemCount = 2
+                    },
+                }
+            }
+        };
     }
 }

@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 
-namespace SalesPoint.Data.Data
+namespace SalesPoint.Models.ViewModels
 {
-    public class MenuSet
+    public class MenuSetInView
     {
-        [Required]
-        public int MenuSetId { get; set; }
-
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
-
-        public IEnumerable<MenuItemMenuSet> SetItems {get;set;}
+        public decimal? Price { get; set; }
 
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        public IEnumerable<MenuItemSetView> Items { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SalesPoint.Models.ViewModels
 {
-    public class MenuItemOutView
+    public class MenuItemSetOutView
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -13,5 +13,6 @@ namespace SalesPoint.Models.ViewModels
         public int MenuTypeId { get; set; }
         public int MenuItemId { get; set; }
         public decimal Weight { get; set; }
+        public int Count { get; set; }
     }
 }
