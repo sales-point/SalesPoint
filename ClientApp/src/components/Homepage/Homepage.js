@@ -120,7 +120,7 @@ const Homepage = () => {
           </Typography>
           <Typography>
             <b>Наши повара</b> — специалисты в сфере японской кухни и смогут приготовить ваше
-            любимое блюда на высшем уровне!
+            любимое блюдо на высшем уровне!
           </Typography>
         </Grid>
         <Grid item className={classes.briefInfoPart}>
