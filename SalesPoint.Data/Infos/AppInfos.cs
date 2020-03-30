@@ -1,6 +1,7 @@
 ﻿using SalesPoint.Data.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SalesPoint.Data.Infos
@@ -11,6 +12,17 @@ namespace SalesPoint.Data.Infos
         {
             "Administrator"
         };
+
+        public enum StepInfo
+        {
+            Accepted = 1,
+            Confirmed = 2,
+            Cooking = 3,
+            ReadyForDeliver = 4,
+            Delivering = 5,
+            Delivered = 6,
+            Closed = 7
+        }
 
         public static List<string> MenuTypesInfo = new List<string>()
         {
@@ -43,8 +55,17 @@ namespace SalesPoint.Data.Infos
                 Price = 90,
                 Weight = 600,
                 Description = "Вкусный напиток"
+            },
+            new MenuItem
+            {
+                MenuItemId = 3,
+                MenuTypeId = (int)MenuTypeEnum.Drink,
+                Mixture = "Филодельфия, что-то там ещё",
+                Name = "Сет №1",
+                Price = 600,
+                Weight = 1000,
+                Description = "Самый вкусный сет"
             }
-
         };
 
         public static List<MenuSet> MenuSets = new List<MenuSet>()
@@ -54,7 +75,6 @@ namespace SalesPoint.Data.Infos
                 MenuSetId = 1,
                 Name = "Наруто и Сакура",
                 Description = "Самый выгодный сет для двоих",
-                Price = 500,
                 SetItems = new List<MenuItemMenuSet>
                 {
                     new MenuItemMenuSet 
@@ -68,6 +88,40 @@ namespace SalesPoint.Data.Infos
                         MenuItemCount = 2
                     },
                 }
+            }
+        };
+
+        public static List<OrderItem> OrderItems = new List<OrderItem>
+        {
+            new OrderItem 
+            {
+                MenuItemId = 1,
+                MenuItemCount = 3,
+                OrderId = 1,
+                OrderItemId = 1
+            },
+            new OrderItem
+            {
+                MenuItemId = 3,
+                MenuItemCount = 1,
+                OrderId = 1,
+                OrderItemId = 2
+            },
+        };
+
+        public static List<Order> Orders = new List<Order>
+        {
+            new Order
+            {
+                OrderId = 1,
+                Address = "Калуга, ул.Тугрика, д.1, кв.1",
+                Comment = "Комментарий",
+                CustomerUserId = new Guid("b5f5d742-8bdc-4923-9e4e-a4fe7aff5aca"),
+                ManagerUserId = new Guid("4656998b-11f2-4ac3-969e-8e374022fbd8"),
+                OrderDate = DateTime.Now,
+                Paid = false,
+                StepId = (int)StepInfo.Accepted,
+                OrderItems = OrderItems.Where(oi=>oi.OrderId==1).ToList()
             }
         };
     }

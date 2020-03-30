@@ -9,7 +9,6 @@ namespace SalesPoint.Models.ViewModels
         public int MenuSetId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
-        public IEnumerable<MenuItemSetOutView> Items { get; set; }
+        public IEnumerable<MenuItemOutView> Items { get; set; }
     }
 }

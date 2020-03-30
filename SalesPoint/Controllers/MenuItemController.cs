@@ -33,11 +33,12 @@ namespace SalesPoint.Controllers
                     Mixture = view.Mixture,
                     Name = view.Name,
                     Price = view.Price.Value,
-                    Weight = view.Weight.Value
+                    Weight = view.Weight.Value,
+                    MenuSetId = view.MenuSetId
                 };
 
                 menuItem = _menuItemManager.AddMenuItem(menuItem);
-                var outView = new MenuItemSetOutView
+                var outView = new MenuItemOutView
                  {
                      MenuItemId = menuItem.MenuItemId,
                      Description = menuItem.Description,
@@ -45,7 +46,8 @@ namespace SalesPoint.Controllers
                      Mixture = menuItem.Mixture,
                      Name = menuItem.Name,
                      Price = menuItem.Price,
-                     Weight = menuItem.Weight
+                     Weight = menuItem.Weight,
+                     MenuSetId = menuItem.MenuSetId
                  };
 
                 return new JsonResult(new { success = true, data = menuItem });
@@ -75,7 +77,7 @@ namespace SalesPoint.Controllers
                 var itemsView = items
                     .Skip((filterModel.Page.Value-1)*filterModel.CountPerPage.Value)
                     .Take(filterModel.CountPerPage.Value)
-                    .Select(i=> new MenuItemSetOutView
+                    .Select(i=> new MenuItemOutView
                     {
                         MenuItemId = i.MenuItemId,
                         Description = i.Description,
@@ -83,7 +85,8 @@ namespace SalesPoint.Controllers
                         Mixture = i.Mixture,
                         Name = i.Name,
                         Price = i.Price,
-                        Weight = i.Weight
+                        Weight = i.Weight,
+                        MenuSetId = i.MenuSetId
                     });
                 return new JsonResult(new { success = true, data = itemsView.ToList(), total});
             }
@@ -103,7 +106,7 @@ namespace SalesPoint.Controllers
 
                 var item = _menuItemManager.GetMenuItem(menuItemId.Value);
 
-                var itemView = new MenuItemSetOutView
+                var itemView = new MenuItemOutView
                     {
                         MenuItemId = item.MenuItemId,
                         Description = item.Description,
@@ -111,7 +114,8 @@ namespace SalesPoint.Controllers
                         Mixture = item.Mixture,
                         Name = item.Name,
                         Price = item.Price,
-                        Weight = item.Weight
+                        Weight = item.Weight,
+                        MenuSetId = item.MenuSetId
                     };
                 return new JsonResult(new { success = true, data = itemView });
             }

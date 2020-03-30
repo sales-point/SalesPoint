@@ -24,5 +24,7 @@ namespace SalesPoint.Models.ViewModels
 
         [Required]
         public decimal? Weight { get; set; }
+
+        public int? MenuSetId { get; set; }
     }
 }

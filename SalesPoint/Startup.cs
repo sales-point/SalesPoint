@@ -47,12 +47,14 @@ namespace SalesPoint
             services.AddScoped<IMenuItemRepository, MenuItemRepositoryStatic>();
             services.AddScoped<IMenuSetRepository, MenuSetRepositoryStatic>();
             services.AddScoped<IMenuTypeRepository, MenuTypeRepository>();
+            services.AddScoped<IOrderRepository, OrderRepositoryStatic>();
             #endregion
 
             #region менеджеры
             services.AddScoped<IMenuTypeManager, MenuTypeManager>();
             services.AddScoped<IMenuItemManager, MenuItemManager>();
             services.AddScoped<IMenuSetManager, MenuSetManager>();
+            services.AddScoped<IOrderManager, OrderManager>();
             #endregion
 
             services.AddDbContext<DataContext>(opt =>

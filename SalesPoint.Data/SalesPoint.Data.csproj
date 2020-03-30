@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200305201847_start.Designer.cs" />
     <Compile Remove="Migrations\20200305220202_usersRolesGuid.cs" />
     <Compile Remove="Migrations\20200305220202_usersRolesGuid.Designer.cs" />
+    <Compile Remove="Migrations\20200330130325_Orders added true.cs" />
+    <Compile Remove="Migrations\20200330130325_Orders added true.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

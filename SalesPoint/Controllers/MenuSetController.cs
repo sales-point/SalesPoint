@@ -45,7 +45,6 @@ namespace SalesPoint.Controllers
                 {
                     Description = menuSetClient.Description,
                     Name = menuSetClient.Name,
-                    Price = menuSetClient.Price.Value,
                     SetItems = setItems
                 };
                 _menuSetManager.AddMenuSet(menuSet);
@@ -69,7 +68,6 @@ namespace SalesPoint.Controllers
                     Description = menuSet.Description,
                     Name = menuSet.Name,
                     MenuSetId = menuSet.MenuSetId,
-                    Price = menuSet.Price,
                     Items = _menuSetManager.GetMenuItems(menuSet)
                         .Select(mi => new MenuItemSetOutView
                         {
@@ -99,9 +97,7 @@ namespace SalesPoint.Controllers
             {
                 var filter = new MenuSetFilter
                 {
-                    Name = filterView.Name,
-                    MaxPrice = filterView.MaxPrice,
-                    MinPrice = filterView.MinPrice
+                    Name = filterView.Name
                 };
 
                 var menuSets = _menuSetManager.GetMenuSets(filter).Skip((filterView.Page - 1)*filterView.CountPerPage)
@@ -112,7 +108,6 @@ namespace SalesPoint.Controllers
                     Description = ms.Description,
                     Name = ms.Name,
                     MenuSetId = ms.MenuSetId,
-                    Price = ms.Price,
                     Items = _menuSetManager.GetMenuItems(ms)
                         .Select(mi => new MenuItemSetOutView
                         {

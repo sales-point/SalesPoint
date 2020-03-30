@@ -15,6 +15,8 @@ namespace SalesPoint.Data
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<MenuType> MenuTypes { get; set; }
         public DbSet<MenuSet> MenuSets { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options)
            : base(options)

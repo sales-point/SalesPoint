@@ -62,8 +62,8 @@ namespace SalesPoint.Controllers
                 if (regResult.Succeeded)
                 {
                     var registredUser = await _userManager.FindByEmailAsync(user.Email);
-                    var token = _userManager.GenerateEmailConfirmationTokenAsync(registredUser);
-
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(registredUser);
+                    var roleResult = await _userManager.AddToRoleAsync(registredUser, "Customer");
                     _context.Database.CommitTransaction();
                     return new JsonResult(new { success = true });
                 }
@@ -76,7 +76,7 @@ namespace SalesPoint.Controllers
             catch (Exception ex)
             {
                 _context.Database.RollbackTransaction();
-                throw ex;
+                return new JsonResult(new { success = false, msg = ex.Message });
             }
         }
 

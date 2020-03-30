@@ -25,9 +25,7 @@ namespace SalesPoint.Repositories.Static
         public IQueryable<MenuSet> GetMenuSets(MenuSetFilter filter)
         {
             return AppInfos.MenuSets.AsQueryable().Where(ms =>
-            (!filter.MaxPrice.HasValue || ms.Price <= filter.MaxPrice) 
-            && (!filter.MinPrice.HasValue || ms.Price >= filter.MinPrice)
-            && (string.IsNullOrEmpty(filter.Name) || ms.Name.ToUpper().Contains(filter.Name.ToUpper())));
+            (string.IsNullOrEmpty(filter.Name) || ms.Name.ToUpper().Contains(filter.Name.ToUpper())));
         }
 
         public IQueryable<MenuItem> GetMenuItems(MenuSet menuSet)

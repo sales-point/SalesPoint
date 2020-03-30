@@ -5,15 +5,11 @@ using System.Text;
 
 namespace SalesPoint.Models.ViewModels
 {
-    public class MenuSetInView
+    public class OrderItemInView
     {
         [Required]
-        public string Name { get; set; }
-
+        public int? ItemId { get; set; }
         [Required]
-        public string Description { get; set; }
-
-        [Required]
-        public IEnumerable<MenuItemSetView> Items { get; set; }
+        public int? Count { get; set; }
     }
 }
