@@ -35,14 +35,25 @@ namespace SalesPoint.Managers
             _orderRepository.SaveChanges();
         }
 
-        public void AssignOrder(Order order, ApplicationUser managerUser)
+        public void AssignOrder(Order order, ApplicationUser managerUser, bool force = false)
         {
+            if (order == null)
+                throw new ArgumentNullException("order");
+            if (managerUser == null)
+                throw new ArgumentNullException("managerUser");
+            if ((order.StepId != (int)AppInfos.StepInfo.Accepted) && (!force))
+                throw new Exception("Заказ уже назначен");
             _orderRepository.AssignOrder(order, managerUser);
+            ChangeOrderStep(order, AppInfos.StepInfo.Assigned);
             _orderRepository.SaveChanges();
         }
 
         public void ChangeOrderStep(Order order, AppInfos.StepInfo step)
         {
+            if (order == null)
+                throw new ArgumentNullException("order");
+            if (!Enum.IsDefined(typeof(AppInfos.StepInfo), step))
+                throw new Exception($"{(int)step} не найден в списке состояний");
             _orderRepository.ChangeOrderStep(order, step);
             _orderRepository.SaveChanges();
         }

@@ -11,5 +11,8 @@ namespace SalesPoint.Models.ViewModels
         public IEnumerable<OrderItemOutView> OrderItems { get; set; }
         public int StepId { get; set; }
         public decimal Price { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Comment { get; set; }
     }
 }

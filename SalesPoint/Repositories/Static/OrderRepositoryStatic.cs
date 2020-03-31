@@ -35,12 +35,13 @@ namespace SalesPoint.Repositories.Static
 
         public IQueryable<Order> GetOrders(OrderFilter filter)
         {
-            return AppInfos.Orders.AsQueryable().Where(o =>
+            var query = AppInfos.Orders.AsQueryable().Where(o =>
             (!filter.CustomerId.HasValue || o.CustomerUserId == filter.CustomerId)
             && (!filter.ManagerId.HasValue || o.ManagerUserId == filter.ManagerId)
-            && (!filter.endDate.HasValue || o.OrderDate<=filter.endDate)
+            && (!filter.endDate.HasValue || o.OrderDate <= filter.endDate)
             && (!filter.startDate.HasValue || o.OrderDate >= filter.startDate)
-            && (filter.StepIds.Contains(o.StepId)));
+            && (filter.StepIds == null || filter.StepIds.Contains(o.StepId)));
+            return query;
         }
 
         public void SaveChanges()

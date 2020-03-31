@@ -95,6 +95,28 @@ namespace SalesPoint.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public async Task<JsonResult> AddToRole(string roleName, Guid? userGuid )
+        {
+            try
+            {
+                if (userGuid == null)
+                    throw new Exception("Не найден пользователь");
+                var user = await _userManager.FindByIdAsync(userGuid?.ToString());
+                if (user == null)
+                    throw new Exception("Не найден пользователь");
+                var res = await _userManager.AddToRoleAsync(user, roleName);
+                if (!res.Succeeded)
+                    throw new Exception($"Не удалось добавить пользователю роль: {res.Errors.ToList()}");
+                return new JsonResult(new { success = true});
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { success = true, msg = ex.Message });
+            }
+        }
+
+        [HttpGet]
         [Authorize(Roles ="Administrator")]
         public async Task<JsonResult> GetRoles(RoleInView role)
         {
@@ -110,6 +132,24 @@ namespace SalesPoint.Controllers
                 }).ToList();
 
             return new JsonResult(new { success = true, total, roles});
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public async Task<JsonResult> GetUsers(PagedView view)
+        {
+            var query = _userManager.Users;
+            var total = query.Count();
+            var result = query.Skip((view.Page - 1) * view.CountPerPage).Take(view.CountPerPage)
+                .Select(u => new 
+                { 
+                    FullName = u.FullName,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    Id = u.Id
+                });
+
+            return new JsonResult(new { success = true, total, result });
         }
 
         [HttpGet]

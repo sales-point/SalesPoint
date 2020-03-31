@@ -10,18 +10,21 @@ namespace SalesPoint.Data.Infos
     {
         public static List<string> RolesInfo = new List<string>()
         {
-            "Administrator"
+            "Administrator",
+            "Manager",
+            "Customer"
         };
 
         public enum StepInfo
         {
             Accepted = 1,
-            Confirmed = 2,
-            Cooking = 3,
-            ReadyForDeliver = 4,
-            Delivering = 5,
-            Delivered = 6,
-            Closed = 7
+            Assigned = 2,
+            Confirmed = 3,
+            Cooking = 4,
+            ReadyForDeliver = 5,
+            Delivering = 6,
+            Delivered = 7,
+            Closed = 8
         }
 
         public static List<string> MenuTypesInfo = new List<string>()

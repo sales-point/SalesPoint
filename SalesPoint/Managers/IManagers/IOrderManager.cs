@@ -15,7 +15,7 @@ namespace SalesPoint.Managers.IManagers
         Order GetOrder(int orderId);
         IQueryable<Order> GetOrders(OrderFilter filter);
         void ChangeOrderStep(Order order, AppInfos.StepInfo step);
-        void AssignOrder(Order order, ApplicationUser manager);
+        void AssignOrder(Order order, ApplicationUser manager, bool force = false);
         decimal CalculateOrderPrice(Order order);
     }
 }

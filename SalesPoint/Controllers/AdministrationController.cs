@@ -16,7 +16,7 @@ namespace SalesPoint.Controllers
     [Route("api/[controller]/[action]")]
     [ApiController]
     [ActionFilterValidation]
-    [Authorize(Roles = "Administrator")]
+   // [Authorize(Roles = "Administrator")]
     public class AdministrationController : Controller
     {
         private readonly IMenuTypeManager _menuTypeManager;

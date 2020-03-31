@@ -47,7 +47,7 @@ namespace SalesPoint.Extensions
                     context.Database.BeginTransaction();
                 try
                 {
-                    if (!context.Roles.Select(r => r.Name).Any(r => AppInfos.RolesInfo.Contains(r)))
+                    if (context.Roles.Select(r => r.Name).Any(r => AppInfos.RolesInfo.Contains(r)))
                     {
                         var t = Task.Run(async () => await DataSeeder.InitRoles(context, rolesManager));
                         t.Wait();
