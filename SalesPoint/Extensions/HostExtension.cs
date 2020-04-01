@@ -47,7 +47,7 @@ namespace SalesPoint.Extensions
                     context.Database.BeginTransaction();
                 try
                 {
-                    if (context.Roles.Select(r => r.Name).Any(r => AppInfos.RolesInfo.Contains(r)))
+                    if (context.Roles.Select(r => r.Name).All(r => AppInfos.RolesInfo.Contains(r)))
                     {
                         var t = Task.Run(async () => await DataSeeder.InitRoles(context, rolesManager));
                         t.Wait();
@@ -59,7 +59,7 @@ namespace SalesPoint.Extensions
                         t.Wait();
                     }
 
-                    if (!context.MenuTypes.Select(mt => mt.Name).Any(mt => AppInfos.MenuTypesInfo.Contains(mt)))
+                    if (context.MenuTypes.Select(mt => mt.Name).All(mt => AppInfos.MenuTypesInfo.Contains(mt)))
                         DataSeeder.InitMenuTypes(context);
 
                     context.SaveChanges();

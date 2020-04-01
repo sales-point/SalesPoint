@@ -72,10 +72,6 @@ namespace SalesPoint
                     .AddEntityFrameworkStores<DataContext>()
                     .AddDefaultTokenProviders();
 
-            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .           AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => Configuration.Bind("JwtSettings", options))
-    .           AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => Configuration.Bind("CookieSettings", options));
-    */
            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {

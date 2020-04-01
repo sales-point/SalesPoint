@@ -12,7 +12,8 @@ namespace SalesPoint.Data.Infos
         {
             "Administrator",
             "Manager",
-            "Customer"
+            "Customer",
+            "Delivery"
         };
 
         public enum StepInfo
