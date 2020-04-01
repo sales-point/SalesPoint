@@ -36,6 +36,8 @@ const NumberFormatCustom = props => {
       ]}
       placeholderChar={'\u2000'}
       showMask
+      onBlur={() => {}}
+      onChange={() => {}}
     />
   )
 }
