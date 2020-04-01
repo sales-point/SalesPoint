@@ -9,7 +9,7 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignContent: 'center',
-    backgroundColor: '#CFDDC3',
+    backgroundColor: theme.palette.secondary.main,
     width: 'inherit',
     padding: theme.spacing(8, 4),
   },
